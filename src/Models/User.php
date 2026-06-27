@@ -27,6 +27,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\VwPersonalAccessToken;
 use App\Models\Activity;
 use VEximweb\Core\Data\Models\Domain;
+use VEximweb\Core\Data\Models\VwDatabaseNotification;
 /**
  * Represents a web interface user (administrator or domain manager).
  * 
@@ -310,4 +311,31 @@ class User extends Authenticatable implements HasTenants, FilamentUser, HasAppAu
         $lastLogin = $this->successfulLogins()->first();
         return $lastLogin?->properties['ip'] ?? null;
     } 
+        
+    /**
+     * Override the default notifications relationship to use custom table.
+     * This replaces the one from the Notifiable trait.
+     */
+    public function notifications()
+    {
+        return $this->morphMany(VwDatabaseNotification::class, 'notifiable')
+                    ->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Override unread notifications relationship.
+     * This is used by Laravel's notification system.
+     */
+    public function unreadNotifications()
+    {
+        return $this->notifications()->whereNull('read_at');
+    }
+
+    /**
+     * Override read notifications relationship.
+     */
+    public function readNotifications()
+    {
+        return $this->notifications()->whereNotNull('read_at');
+    }        
 }
