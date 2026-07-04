@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Traits\LogsAllActivities;
 use VEximweb\Core\Data\Models\User;
+use VEximweb\Core\Data\Models\DKIM;
 
 /**
  * Represents an email domain in the mail system.
@@ -128,7 +129,7 @@ class Domain extends Model implements HasName
      */
     public function dkim(): HasOne
     {
-        return $this->hasOne(\App\Models\DKIM::class, 'domain_id', 'domain_id');
+        return $this->hasOne(DKIM::class, 'domain_id', 'domain_id');
     }
     
     /**
