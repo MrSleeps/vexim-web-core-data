@@ -468,7 +468,33 @@ class EximUser extends Authenticatable implements HasTimeline, FilamentUser, Has
     public function setEmailAttribute($value): void
     {
         $this->attributes['username'] = $value;
-    }   
+    }
+
+    /**
+     * Override the default notifications relationship to use the VExim
+     * notifications view.
+     */
+    public function notifications()
+    {
+        return $this->morphMany(VwDatabaseNotification::class, 'notifiable')
+            ->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get unread database notifications.
+     */
+    public function unreadNotifications()
+    {
+        return $this->notifications()->whereNull('read_at');
+    }
+
+    /**
+     * Get read database notifications.
+     */
+    public function readNotifications()
+    {
+        return $this->notifications()->whereNotNull('read_at');
+    }
 
     public function groups()
     {
