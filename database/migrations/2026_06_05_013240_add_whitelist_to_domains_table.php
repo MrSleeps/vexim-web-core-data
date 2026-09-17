@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('domains', function (Blueprint $table) {
-            $table->dropColumn(['on_whitelist']);
+            $table->dropColumn(['whitelists']);
         });
     }
 };
