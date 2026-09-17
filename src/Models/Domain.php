@@ -45,6 +45,7 @@ class Domain extends Model implements HasName
         'type',             // Domain type (e.g., 'local', 'alias', 'remote')
         'avscan',           // Whether virus scanning is enabled
         'blocklists',       // Whether blocklist filtering is enabled
+        'whitelists',       // Whether whitelist filtering is enabled
         'enabled',          // Whether the domain is active and accepting email
         'mailinglists',     // Whether mailing list functionality is enabled
         'maxmsgsize',       // Maximum allowed message size in bytes
@@ -63,6 +64,7 @@ class Domain extends Model implements HasName
         'enabled' => 'boolean',
         'avscan' => 'boolean',
         'blocklists' => 'boolean',
+        'whitelists' => 'boolean',
         'mailinglists' => 'boolean',
         'pipe' => 'boolean',
         'spamassassin' => 'boolean',
