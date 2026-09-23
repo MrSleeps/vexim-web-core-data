@@ -13,18 +13,18 @@ return new class extends Migration
     {
         if (Schema::hasTable('vw_activity_log')) {
             DB::table('vw_activity_log')
-                ->where('subject_type', 'App\\Models\\EximUser')
-                ->update(['subject_type' => 'VEximweb\\Core\\Data\\Models\\EximUser']);
+                ->where('subject_type', 'App\Models\EximUser')
+                ->update(['subject_type' => 'VEximweb\Core\Data\Models\EximUser']);
 
             DB::table('vw_activity_log')
-                ->where('causer_type', 'App\\Models\\EximUser')
-                ->update(['causer_type' => 'VEximweb\\Core\\Data\\Models\\EximUser']);
+                ->where('causer_type', 'App\Models\EximUser')
+                ->update(['causer_type' => 'VEximweb\Core\Data\Models\EximUser']);
         }
 
         if (Schema::hasTable('vw_model_has_roles')) {
             DB::table('vw_model_has_roles')
-                ->where('model_type', 'App\\Models\\EximUser')
-                ->update(['model_type' => 'VEximweb\\Core\\Data\\Models\\EximUser']);
+                ->where('model_type', 'App\Models\EximUser')
+                ->update(['model_type' => 'VEximweb\Core\Data\Models\EximUser']);
         }
     }
 
@@ -35,18 +35,18 @@ return new class extends Migration
     {
         if (Schema::hasTable('vw_activity_log')) {
             DB::table('vw_activity_log')
-                ->where('subject_type', 'VEximweb\\Core\\Data\\Models\\EximUser')
-                ->update(['subject_type' => 'App\\Models\\EximUser']);
+                ->where('subject_type', 'VEximweb\Core\Data\Models\EximUser')
+                ->update(['subject_type' => 'App\Models\EximUser']);
 
             DB::table('vw_activity_log')
-                ->where('causer_type', 'VEximweb\\Core\\Data\\Models\\EximUser')
-                ->update(['causer_type' => 'App\\Models\\EximUser']);
+                ->where('causer_type', 'VEximweb\Core\Data\Models\EximUser')
+                ->update(['causer_type' => 'App\Models\EximUser']);
         }
 
         if (Schema::hasTable('vw_model_has_roles')) {
             DB::table('vw_model_has_roles')
-                ->where('model_type', 'VEximweb\\Core\\Data\\Models\\EximUser')
-                ->update(['model_type' => 'App\\Models\\EximUser']);
+                ->where('model_type', 'VEximweb\Core\Data\Models\EximUser')
+                ->update(['model_type' => 'App\Models\EximUser']);
         }
     }
 };
